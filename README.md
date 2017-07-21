@@ -17,13 +17,25 @@ This will have the side effect to support the FreeSWITCH project ;)
 
 Installation
 ============
-You need to have git on your build machine and internet access, since
-the Makefile will try to checkout bcg729 sources and build them.
+```
+cd /usr/src
+wget https://github.com/tridcatij/mod_bcg729/archive/master.zip
+unzip master.zip
 
-Edit Makefile and edit FS_INCLUDES, FS_MODULES vars to point where
-your FreeSWITCH includes are and where you want to install the module.
+make
+make install
+```
 
-After, just type make and, if build completes without errors, make install .
+Open file
+```
+nano /usr/local/freeswitch/conf/autoload_configs/modules.conf.xml
+```
+and make following changes
+```
+<!--<load module="mod_g729"/>-->
+<load module="mod_bcg729"/>
+```
 
-Edit autoload_configs/modules.conf.xml , comment out mod_g729 and add mod_bcg729 .
-Now restart your FreeSWITCH and you're done.
+Add codec to the vars.xml and restart FS.
+
+If you're using ASTPP, just add G729 in the current SIP profile.
