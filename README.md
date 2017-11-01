@@ -22,6 +22,8 @@ cd /usr/src
 wget https://github.com/tridcatij/mod_bcg729/archive/master.zip
 unzip master.zip
 
+cd mod_bcg729-master
+
 make
 make install
 ```
